@@ -22,18 +22,16 @@
   <body>
     <header>
       <nav>
-        <ul id="navi">
-          <li id="logo">
-            <a href="index.html">
-              <img src="assets/general/logo.png" id="logo" alt="Ngoc Thao" />
-            </a>
-          </li>
-          <ul id="menu">
+        <div class="site-navigation">
+          <a class="site-logo" href="index.html">
+            <img src="assets/general/logo.png" alt="Ngoc Thao" />
+          </a>
+          <ul id="menu" class="site-menu">
             <li><a href="works.html">Works</a></li>
             <li><a href="archive.html">Archive</a></li>
             <li id="menu-about"><a href="about.html">About</a></li>
           </ul>
-        </ul>
+        </div>
       </nav>
     </header>
 
@@ -41,10 +39,10 @@
       <article class="project-detail">
         <section class="project-hero">
           <div class="project-title-row">
-            <h1>Thay Tướng Đổi Vận</h1>
+            <h3>Thay Tướng Đổi Vận</h3>
             <div class="meta">
-            <p>Web-based Experience</p>
-            <p>2025</p>
+            <h3>Web-based Experience</h3>
+            <h3>2025</h3>
             </div>
           </div>
           <img
@@ -55,7 +53,7 @@
           />
         </section>
 
-        <section class="ttdv-intro-grid">
+        <section class="case-intro-grid">
           <div>
             <h4>Context</h4>
             <p>
@@ -84,24 +82,26 @@
           </div>
         </section>
 
-        <section class="ttdv-experience">
-          <div class="ttdv-copy">
+        <section class="case-feature-split">
+          <div class="case-copy">
             <h4>Experience</h4>
             <p>
               Rooted in Tâm Sinh Tướng, the belief that our inner self shapes
               our outer form, this project bridges traditional heritage with
               modern interaction through two core pillars:
             </p>
-            <p>
-              <strong>The Framework:</strong> Reimagining the 12 traditional
+            <ul class="case-list">
+              <li>
+                <strong>The Framework:</strong> Reimagining the 12 traditional
               Houses of Physiognomy as a space for self-reflection rather than
-              judgment.
-            </p>
-            <p>
-              <strong>The Connection:</strong> An interactive space where your
+                judgment.
+              </li>
+              <li>
+                <strong>The Connection:</strong> An interactive space where your
               physical appearance and internal mind meet, letting you reshape
-              the meaning of your features based on who you are inside.
-            </p>
+                the meaning of your features based on who you are inside.
+              </li>
+            </ul>
             <p>
               <strong>The Deliverables:</strong> Interactive website, the "new"
               Physiognomy book, mini craft kit.
@@ -114,16 +114,16 @@
           />
         </section>
 
-        <section class="ttdv-browser" aria-label="Website preview">
+        <section class="browser-preview" aria-label="Website preview">
           <video autoplay loop>
             <source src="assets/thaytuongdoivan/Animation screen record.mov" type="video/mp4"
             onerror="this.onerror=null;this.src='assets/thaytuongdoivan/Thaytuongdoivan thumbnail.jpg';"
             alt="Thay Tướng Đổi Vận website">
           </video>
         </section>
-        <p class="ttdv-link-label"><a href="https://readymag.website/u1043692514/6065152/">Website Link</a></p>
+        <p class="external-link-label"><a href="https://readymag.website/u1043692514/6065152/">Website Link</a></p>
 
-        <section class="ttdv-pair" aria-label="Website interface details">
+        <section class="media-pair" aria-label="Website interface details">
           <video autoplay loop>
             <source src="assets/thaytuongdoivan/3 faces.mp4" type="video/mp4"
             onerror="this.onerror=null;this.src='assets/thaytuongdoivan/Thaytuongdoivan thumbnail.jpg';"
@@ -150,7 +150,7 @@
           </p>
         </section>
 
-        <section class="ttdv-steps" aria-label="Digital experience steps">
+        <section class="process-grid" aria-label="Digital experience steps">
           <figure>
             <img
               src="assets/thaytuongdoivan/9 website screenshot/1.png"
@@ -222,8 +222,8 @@
           </figure>
         </section>
 
-        <section class="ttdv-book-feature">
-          <div class="ttdv-copy">
+        <section class="artifact-feature">
+          <div class="case-copy">
             <p>
             <strong>The Physiognomy Book:</strong> 
             <br/>
@@ -240,7 +240,7 @@
               entirely our own.
             </p>
           </div>
-          <div class="ttdv-book-stack" aria-label="Physiognomy book covers">
+          <div class="artifact-visual" aria-label="Physiognomy book covers">
             <img
               src="assets/thaytuongdoivan/the book.png"
               alt="Physiognomy book"
@@ -248,7 +248,7 @@
           </div>
         </section>
 
-        <section class="ttdv-book-grid" aria-label="Book cover collection">
+        <section class="artifact-grid" aria-label="Book cover collection">
           <img src="assets/thaytuongdoivan/12 cards/Physiognomy Book.jpg" alt="Book cover" />
           <img src="assets/thaytuongdoivan/12 cards/Physiognomy Book2.jpg" alt="Book cover" />
           <img src="assets/thaytuongdoivan/12 cards/Physiognomy Book3.jpg" alt="Book cover" />
@@ -263,7 +263,7 @@
           <img src="assets/thaytuongdoivan/12 cards/Physiognomy Book12.jpg" alt="Book cover" />
         </section>
 
-        <section class="ttdv-zine">
+        <section class="captioned-media">
           <img
             src="assets/thaytuongdoivan/zine mockup.png"
             alt="Open zine spread"
@@ -271,8 +271,8 @@
           <p>Zine version</p>
         </section>
 
-        <section class="ttdv-craft">
-          <div class="ttdv-copy">
+        <section class="artifact-feature artifact-feature--kit">
+          <div class="case-copy">
             <p>
             <strong>The Mini Craft Kit</strong> 
             <br/>
@@ -283,7 +283,7 @@
               Fate Card as a tangible reminder of their reflective journey.
             </p>
           </div>
-          <div class="ttdv-craft-stack" aria-label="Mini craft kit">
+          <div class="artifact-visual" aria-label="Mini craft kit">
             <img
               src="assets/thaytuongdoivan/the kit.png"
               alt="Personalized fate card"
@@ -291,7 +291,7 @@
           </div>
         </section>
 
-        <section class="ttdv-final-gallery" aria-label="Craft kit in use">
+        <section class="asymmetric-gallery" aria-label="Craft kit in use">
           <img
             src="assets/thaytuongdoivan/people 1.PNG"
             onerror="this.onerror=null;this.src='assets/thaytuongdoivan/Thaytuongdoivan thumbnail.jpg';"
@@ -309,7 +309,7 @@
           />
         </section>
 
-        <section class="ttdv-credits">
+        <section class="credits-block">
           <div>
             <img src="assets/thaytuongdoivan/author.jpg">
           </div>
@@ -330,10 +330,10 @@
         </div>
       </div>
       <section id="socials">
-        <li><a href="mailto:hnthao103@gmail.com" id="media" class="button" target="_blank">Email</a></li>
-        <li><a href="https://www.linkedin.com/in/thao-hoang-b90932307/" id="media" class="button" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.facebook.com/gabi.hoang.5" id="media" class="button" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/prettyinbeige/" id="media" class="button" target="_blank">Instagram</a></li>
+        <a href="mailto:hnthao103@gmail.com" class="button" target="_blank">Email</a>
+        <a href="https://www.linkedin.com/in/thao-hoang-b90932307/" class="button" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/gabi.hoang.5" class="button" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/prettyinbeige/" class="button" target="_blank">Instagram</a>
       </section>
     </footer>
     <script src="script.js"></script>
