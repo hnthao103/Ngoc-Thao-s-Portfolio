@@ -1,3 +1,45 @@
+//loading screen
+const loadingScreen = document.createElement("div");
+loadingScreen.id = "loading-screen";
+loadingScreen.setAttribute("aria-hidden", "true");
+loadingScreen.innerHTML = `
+  <div class="loading-mark">
+    <div class="loading-wand">
+      <svg class="loading-wand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" fill="none" aria-hidden="true">
+        <path d="M18.8542 0.248735L12.5448 5.00656L6.07018 0.475695C5.10421 -0.200094 3.83737 0.755208 4.22148 1.86977L6.79725 9.34068L0.48705 14.0991C-0.454485 14.8091 0.0621654 16.3089 1.24155 16.2884L9.14225 16.1481L11.718 23.619C12.1021 24.7336 13.6885 24.7058 14.0331 23.5783L14.5566 21.8634C16.282 23.2203 18.539 24.7254 19.8286 26.2028C19.8606 26.2401 19.8939 26.2777 19.9264 26.3158C19.6432 26.73 19.6395 27.297 19.9571 27.7182L20.4863 28.42C20.8274 28.8723 21.4316 29.0135 21.9298 28.7946C26.8716 35.1584 35.6759 47.7168 36.8453 49.3889C36.7996 49.7756 36.8952 50.18 37.1471 50.5141L38.2374 51.9599C38.5617 52.3899 39.0684 52.6046 39.5708 52.5793C39.3613 52.9781 39.3838 53.4801 39.6725 53.863L40.2071 54.5719C40.6049 55.0994 41.362 55.2056 41.8895 54.8078L46.6067 51.2506C47.1343 50.8528 47.2404 50.0957 46.8426 49.5682L46.308 48.8592C46.0199 48.4772 45.5434 48.3175 45.1018 48.4085C45.2643 47.9324 45.1966 47.3854 44.8729 46.9562L43.7826 45.5103C43.5307 45.1762 43.1682 44.9732 42.7838 44.9107C41.4945 43.329 31.8323 31.4502 27.0599 24.9386C27.4324 24.5198 27.4714 23.8798 27.1224 23.417L26.5932 22.7153C26.2672 22.2829 25.6998 22.134 25.2149 22.314C25.185 22.2677 25.1548 22.2227 25.1261 22.1779C24.048 20.5072 23.2914 17.9659 22.457 15.9133L24.242 15.8812C25.4207 15.86 25.8843 14.3432 24.9177 13.6666L18.4431 9.13571L20.7506 1.57818C21.0952 0.450705 19.7947 -0.459256 18.8532 0.250741L18.8542 0.248735Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="loading-sparkle loading-sparkle-1"></div>
+    <div class="loading-sparkle loading-sparkle-2"></div>
+    <div class="loading-sparkle loading-sparkle-3"></div>
+    <div class="loading-sparkle loading-sparkle-4"></div>
+    <div class="loading-sparkle loading-sparkle-5"></div>
+    <div class="loading-sparkle loading-sparkle-6"></div>
+    <div class="loading-sparkle loading-sparkle-7"></div>
+    <div class="loading-sparkle loading-sparkle-8"></div>
+  </div>
+`;
+document.body.prepend(loadingScreen);
+
+const loadingStartedAt = performance.now();
+const minLoadingTime = 2200;
+
+function hideLoadingScreen() {
+  const elapsed = performance.now() - loadingStartedAt;
+  const remaining = Math.max(0, minLoadingTime - elapsed);
+
+  window.setTimeout(() => {
+    loadingScreen.classList.add("is-hiding");
+    window.setTimeout(() => loadingScreen.remove(), 500);
+  }, remaining);
+}
+
+if (document.readyState === "complete") {
+  hideLoadingScreen();
+} else {
+  window.addEventListener("load", hideLoadingScreen, { once: true });
+}
+
 //header homepage
 const header = document.getElementById("header-home");
 const intro = document.getElementById("introduction-text");
@@ -11,6 +53,48 @@ if (header && intro) {
       header.classList.remove("show");
     }
 
+  });
+}
+
+//header active page
+const siteMenu = document.getElementById("menu");
+
+if (siteMenu) {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const archivePages = new Set([
+    "archive.html",
+    "maisonchance.html",
+    "themergedlayers.html",
+    "thepedlar.html",
+    "wheredolostthingsgo.html"
+  ]);
+  const worksPages = new Set([
+    "works.html",
+    "anam.html",
+    "fieldop.html",
+    "nguyetvienhoi.html",
+    "soaikinhlam.html",
+    "taadesign.html",
+    "thaytuongdoivan.html",
+    "touristsgohome.html"
+  ]);
+
+  let activeHref = "";
+
+  if (currentPage === "about.html") {
+    activeHref = "about.html";
+  } else if (archivePages.has(currentPage)) {
+    activeHref = "archive.html";
+  } else if (worksPages.has(currentPage)) {
+    activeHref = "works.html";
+  }
+
+  siteMenu.querySelectorAll("li").forEach(item => {
+    const link = item.querySelector("a");
+    item.classList.toggle(
+      "is-active",
+      Boolean(activeHref && link && link.getAttribute("href") === activeHref)
+    );
   });
 }
 
