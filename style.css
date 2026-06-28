@@ -1215,7 +1215,7 @@ letter-spacing: -0.0176rem;
 
 #fullscreen-img {
   aspect-ratio: 16/9;
-  object-position: top;
+  /* object-position: top; */
 }
 
 .image-full {

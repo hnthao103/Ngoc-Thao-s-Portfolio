@@ -22,7 +22,7 @@ loadingScreen.innerHTML = `
 document.body.prepend(loadingScreen);
 
 const loadingStartedAt = performance.now();
-const minLoadingTime = 2200;
+const minLoadingTime = 1800;
 
 function hideLoadingScreen() {
   const elapsed = performance.now() - loadingStartedAt;
