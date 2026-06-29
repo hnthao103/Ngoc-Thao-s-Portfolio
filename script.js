@@ -269,6 +269,9 @@ const profilePic = document.getElementById("profile-pic");
 let isDragging = false;
 let offsetX = 0;
 let offsetY = 0;
+const canUseFinePointer = window.matchMedia("(pointer: fine)").matches;
+const profileDragCursor = canUseFinePointer ? "var(--cursor-wand-hover), grabbing" : "grabbing";
+const profileRestCursor = canUseFinePointer ? "var(--cursor-wand-hover), grab" : "grab";
 
 if (profilePic) {
   profilePic.addEventListener("mousedown", (e) => {
@@ -277,7 +280,7 @@ if (profilePic) {
     offsetX = e.clientX - profilePic.offsetLeft;
     offsetY = e.clientY - profilePic.offsetTop;
 
-    profilePic.style.cursor = "grabbing";
+    profilePic.style.cursor = profileDragCursor;
   });
 }
 
@@ -291,5 +294,5 @@ document.addEventListener("mousemove", (e) => {
 document.addEventListener("mouseup", () => {
     if (!profilePic) return;
     isDragging = false;
-    profilePic.style.cursor = "grab";
+    profilePic.style.cursor = profileRestCursor;
 });
