@@ -296,3 +296,93 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
     profilePic.style.cursor = profileRestCursor;
 });
+
+// reveal elements as they enter the viewport
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function getUniqueElements(selectors) {
+  const elements = new Set();
+
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(element => elements.add(element));
+  });
+
+  return [...elements];
+}
+
+function initializeScrollReveal() {
+  const revealElements = getUniqueElements([
+    "#introduction-text",
+    "#all-thinking",
+    ".home-cta",
+    ".home-cta-2",
+    "#works-home a",
+    "#works-title",
+    "#archive-title",
+    "#about-title",
+    "#photo-text",
+    "#cv .info",
+    "#works-list a",
+    ".project-hero",
+    ".project-summary-item",
+    ".project-summary-split .item",
+    ".project-board",
+    ".project-embed",
+    ".project-gallery img",
+    ".project-process",
+    ".case-context-copy",
+    ".case-intro",
+    ".case-intro-grid > *",
+    ".case-feature-split > *",
+    ".browser-preview",
+    ".media-pair > *",
+    ".process-grid > *",
+    ".artifact-feature > *",
+    ".artifact-grid > *",
+    ".captioned-media",
+    ".asymmetric-gallery > *",
+    ".credits-block",
+    ".case-media > *",
+    ".image-stacks > *",
+    ".image-stacks-left > *",
+    ".image-split > *",
+    ".poster-pair > *",
+    ".poster-showcase > *",
+    ".poster-rationale",
+    ".four-poster",
+    ".model-grid > *",
+    ".concept-copy",
+    "footer"
+  ]);
+
+  if (!revealElements.length) return;
+
+  revealElements.forEach(element => {
+    const siblingIndex = [...element.parentElement.children].indexOf(element);
+    const delay = Math.min(Math.max(siblingIndex, 0), 5) * 60;
+
+    element.classList.add("scroll-reveal");
+    element.style.setProperty("--reveal-delay", `${delay}ms`);
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach(element => element.classList.add("is-visible"));
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.12
+  });
+
+  revealElements.forEach(element => revealObserver.observe(element));
+}
+
+initializeScrollReveal();

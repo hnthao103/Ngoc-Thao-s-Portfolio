@@ -674,6 +674,31 @@ body {
     overflow-x: hidden;
 }
 
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 2.75rem, 0);
+  transition:
+    opacity .75s cubic-bezier(.22, 1, .36, 1),
+    transform .85s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
 footer {
   position: relative;
   display: flex;
